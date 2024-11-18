@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial System Automation</title>
+    <style>
+        .tracker-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+        }
+        
+        .automation-section {
+            margin: 30px 0;
+            border-radius: 12px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a56db;
+        }
+        
+        .automation-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .automation-item:hover {
+            background: #f1f5f9;
+        }
+        
+        .icon {
+            font-size: 20px;
+            margin-right: 15px;
+            min-width: 28px;
+            text-align: center;
+        }
+        
+        .item-content {
+            flex-grow: 1;
+        }
+        
+        .item-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #1f2937;
+        }
+        
+        .item-description {
+            font-size: 14px;
+            color: #4b5563;
+            margin-bottom: 8px;
+        }
+        
+        .impact-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .setup-steps {
+            margin-top: 10px;
+            padding: 12px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            display: none;
+            font-size: 14px;
+        }
+        
+        .setup-steps.visible {
+            display: block;
+        }
+        
+        .step {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+        }
+        
+        .completion-toggle {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #2563eb;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .completion-toggle:checked {
+            background: #2563eb;
+        }
+        
+        .completion-toggle:checked:after {
+            content: "✓";
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+        
+        .button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        
+        .button:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <div class="tracker-container">
+        <h1>Financial System Automation</h1>
+        <p>Track your progress in building an efficient, automated financial system. Each completed item reduces manual work and helps prevent financial oversights.</p>
+        
+        <div class="automation-section">
+            <div class="section-header">
+                <div class="section-title">💳 Core Banking Setup</div>
+                <div class="progress-indicator">0/3 Complete</div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            
+            <div class="automation-item">
+                <div class="item-content">
+                    <div class="item-title">Digital Banking Configuration</div>
+                    <div class="impact-tag">Time saved: 2-3 hours/month</div>
+                    <div class="item-description">Set up mobile banking apps, alerts, and account linking for comprehensive financial visibility.</div>
+                    <button class="button" onclick="toggleSteps(this)">View Setup Steps</button>
+                    <div class="setup-steps">
+                        <div class="step">Download and set up mobile banking apps for all accounts</div>
+                        <div class="step">Enable biometric login and security features</div>
+                        <div class="step">Configure balance and transaction alerts</div>
+                        <div class="step">Link accounts for easy transfers</div>
+                    </div>
+                </div>
+                <input type="checkbox" class="completion-toggle" onchange="updateProgress(this)">
+            </div>
+            
+            <div class="automation-item">
+                <div class="item-content">
+                    <div class="item-title">Paperless System Implementation</div>
+                    <div class="impact-tag">Reduces missed statements</div>
+                    <div class="item-description">Convert all accounts to e-statements with organized digital storage.</div>
+                    <button class="button" onclick="toggleSteps(this)">View Setup Steps</button>
+                    <div class="setup-steps">
+                        <div class="step">Enable paperless statements for all accounts</div>
+                        <div class="step">Set up email filters for financial documents</div>
+                        <div class="step">Create digital filing system</div>
+                        <div class="step">Configure automatic backups</div>
+                    </div>
+                </div>
+                <input type="checkbox" class="completion-toggle" onchange="updateProgress(this)">
+            </div>
+        </div>
+        
+        <div class="automation-section">
+            <div class="section-header">
+                <div class="section-title">📅 Payment Systems</div>
+                <div class="progress-indicator">0/3 Complete</div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            
+            <div class="automation-item">
+                <div class="item-content">
+                    <div class="item-title">Fixed Payment Automation</div>
+                    <div class="impact-tag">Eliminates late fees</div>
+                    <div class="item-description">Set up automatic payments for consistent monthly bills.</div>
+                    <button class="button" onclick="toggleSteps(this)">View Setup Steps</button>
+                    <div class="setup-steps">
+                        <div class="step">List all monthly fixed payments</div>
+                        <div class="step">Schedule automatic payments based on pay schedule</div>
+                        <div class="step">Set up payment confirmation alerts</div>
+                        <div class="step">Create payment calendar for tracking</div>
+                    </div>
+                </div>
+                <input type="checkbox" class="completion-toggle" onchange="updateProgress(this)">
+            </div>
+            
+            <div class="automation-item">
+                <div class="item-content">
+                    <div class="item-title">Credit Card Management</div>
+                    <div class="impact-tag">Maintains credit score</div>
+                    <div class="item-description">Automate credit card payments to prevent interest charges.</div>
+                    <button class="button" onclick="toggleSteps(this)">View Setup Steps</button>
+                    <div class="setup-steps">
+                        <div class="step">Set up automatic full balance payments</div>
+                        <div class="step">Configure payment date alerts</div>
+                        <div class="step">Set up balance notifications</div>
+                        <div class="step">Create spending alerts</div>
+                    </div>
+                </div>
+                <input type="checkbox" class="completion-toggle" onchange="updateProgress(this)">
+            </div>
+        </div>
+        
+        <div class="automation-section">
+            <div class="section-header">
+                <div class="section-title">📈 Growth & Investment</div>
+                <div class="progress-indicator">0/2 Complete</div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            
+            <div class="automation-item">
+                <div class="item-content">
+                    <div class="item-title">Automated Savings Plan</div>
+                    <div class="impact-tag">Builds emergency fund</div>
+                    <div class="item-description">Implement systematic savings transfers aligned with payday.</div>
+                    <button class="button" onclick="toggleSteps(this)">View Setup Steps</button>
+                    <div class="setup-steps">
+                        <div class="step">Calculate optimal saving percentage</div>
+                        <div class="step">Set up automatic transfers post-paycheck</div>
+                        <div class="step">Enable round-up savings features</div>
+                        <div class="step">Create savings progress alerts</div>
+                    </div>
+                </div>
+                <input type="checkbox" class="completion-toggle" onchange="updateProgress(this)">
+            </div>
+            
+            <div class="automation-item">
+                <div class="item-content">
+                    <div class="item-title">Investment Automation</div>
+                    <div class="impact-tag">Enables dollar-cost averaging</div>
+                    <div class="item-description">Set up recurring investment contributions.</div>
+                    <button class="button" onclick="toggleSteps(this)">View Setup Steps</button>
+                    <div class="setup-steps">
+                        <div class="step">Set up recurring investment transfers</div>
+                        <div class="step">Enable dividend reinvestment</div>
+                        <div class="step">Configure investment alerts</div>
+                        <div class="step">Schedule quarterly portfolio reviews</div>
+                    </div>
+                </div>
+                <input type="checkbox" class="completion-toggle" onchange="updateProgress(this)">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSteps(button) {
+            const steps = button.nextElementSibling;
+            steps.classList.toggle('visible');
+            button.textContent = steps.classList.contains('visible') ? 'Hide Steps' : 'View Setup Steps';
+        }
+        
+        function updateProgress(checkbox) {
+            const section = checkbox.closest('.automation-section');
+            const total = section.querySelectorAll('.completion-toggle').length;
+            const completed = section.querySelectorAll('.completion-toggle:checked').length;
+            
+            const progressBar = section.querySelector('.progress-fill');
+            progressBar.style.width = `${(completed / total) * 100}%`;
+            
+            section.querySelector('.progress-indicator').textContent = `${completed}/${total} Complete`;
+        }
+    </script>
+</body>
+</html>
